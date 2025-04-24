@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindfulWell - Your Mental Health Companion</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            position: relative;
+            overflow-x: hidden;
+            background-color: #ffffff;
+        }
+        .wave-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('wave-haikei (1).svg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: -1;
+        }
+        .content-wrapper {
+            position: relative;
+            z-index: 1;
+        }
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+        .navbar.scrolled {
+            padding: 0.5rem 0;
+            background-color: rgba(255, 255, 255, 0.98);
+        }
+        .navbar-brand {
+            color: #0d6eff !important;
+            font-weight: 700;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .navbar-brand i {
+            font-size: 1.8rem;
+        }
+        .nav-link {
+            color: #333 !important;
+            font-weight: 500;
+            padding: 0.5rem 1rem !important;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background-color: #0d6eff;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        .nav-link:hover::after {
+            width: 80%;
+        }
+        .nav-link:hover {
+            color: #0d6eff !important;
+        }
+        .btn-login {
+            background-color: #0d6eff;
+            color: white !important;
+            border-radius: 8px;
+            padding: 0.5rem 1.2rem !important;
+            margin-left: 1rem;
+            transition: all 0.3s ease;
+        }
+        .btn-login:hover {
+            background-color: #0b5ed7;
+            transform: translateY(-2px);
+        }
+        .navbar-toggler {
+            border: none;
+            padding: 0.5rem;
+        }
+        .navbar-toggler:focus {
+            box-shadow: none;
+        }
+        .navbar-toggler-icon {
+            background-image: none;
+            position: relative;
+            width: 24px;
+            height: 24px;
+        }
+        .navbar-toggler-icon::before,
+        .navbar-toggler-icon::after {
+            content: '';
+            position: absolute;
+            width: 24px;
+            height: 2px;
+            background-color: #0d6eff;
+            transition: all 0.3s ease;
+        }
+        .navbar-toggler-icon::before {
+            top: 6px;
+        }
+        .navbar-toggler-icon::after {
+            bottom: 6px;
+        }
+        .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::before {
+            transform: rotate(45deg);
+            top: 11px;
+        }
+        .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::after {
+            transform: rotate(-45deg);
+            bottom: 11px;
+        }
+        .hero-section {
+            padding: 100px 0;
+        }
+        .hero-section h1 {
+            color: #0d6eff;
+        }
+        .btn-primary {
+            background-color: #0d6eff;
+            border: none;
+        }
+        .card {
+            border: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+        .card i {
+            color: #0d6eff;
+        }
+        .emergency-section {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="wave-background"></div>
+    <div class="content-wrapper">
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <i class="fas fa-heartbeat"></i>
+                    MindfulWell
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#resources">Resources</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#tools">Self-Help Tools</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#resources">Find Help</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#footer">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link btn-login" href="login.html">Login</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section id="home" class="hero-section">
+            <div class="container">
+                <div class="row align-items-center min-vh-100">
+                    <div class="col-lg-6">
+                        <h1>Your Mental Health Matters</h1>
+                        <p class="lead">Find support, resources, and tools to help you on your mental health journey.</p>
+                        <a href="#tools" class="btn btn-primary btn-lg">Get Started</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+     <!-- Self-Help Tools Section -->
+     <section id="tools" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">Self-Help Tools</h2>
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3>Guided Meditation</h3>
+                            <p>Practice mindfulness and reduce stress with our guided meditation sessions.</p>
+                            <a href="meditation-timer.html" class="btn btn-primary">Start Meditating</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3>Mood Tracker</h3>
+                            <p>Track your mood patterns and identify triggers.</p>
+                            <a href="mood-tracker.html" class="btn btn-primary">Start Tracking</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <!-- Resources Section -->
+        <section id="resources" class="py-5">
+            <div class="container">
+                <h2 class="text-center mb-5">Mental Health Resources</h2>
+                <div class="row">
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <i class="fas fa-book fa-3x mb-3 text-primary"></i>
+                                <h3>Educational Materials</h3>
+                                <p>Learn about different mental health conditions and treatments.</p>
+                                <a href="educational-materials.html" class="btn btn-outline-primary">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <i class="fas fa-hands-helping fa-3x mb-3 text-primary"></i>
+                                <h3>Support Groups</h3>
+                                <p>Connect with others who understand what you're going through.</p>
+                                <a href="https://www.mind.org.uk/" class="btn btn-outline-primary">Find Support</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <i class="fas fa-phone-alt fa-3x mb-3 text-primary"></i>
+                                <h3>Emergency Help</h3>
+                                <p>Immediate support when you need it most.</p>
+                                <a href="https://www.justanswer.com/sip/psychiatrist?r=ppc|ga|1|||&JPKW=online%20psychiatrist&JPDC=S&JPST=&JPAD=579680787979&JPMT=b&JPNW=g&JPAF=txt&JPRC=1&JPCD=&JPOP=&cmpid=11185346152&agid=108444344574&fiid=&tgtid=kwd-58590928&ntw=g&dvc=c&gad_source=1&gbraid=0AAAAAD-iiX2W8nm_PF3xZSToqQhkkBnQL&gclid=Cj0KCQjwtpLABhC7ARIsALBOCVrAPLf7suqhT5JPEvTX_b5mbq8cRpVtSmYFLXBBL-i2Ed31u7lAfbkaAo2cEALw_wcB" class="btn btn-outline-primary" target="_blank" rel="noopener noreferrer">Get Help Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+       
+        <!-- Emergency Section -->
+        <section class="emergency-section py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <h2>Need Immediate Help?</h2>
+                        <p class="lead">If you're in crisis, please call:</p>
+                        <div class="emergency-numbers">
+                            <p><strong>National Suicide Prevention Lifeline:</strong> 988</p>
+                            <p><strong>Crisis Text Line:</strong> Text HOME to 741741</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer id="footer" class="bg-dark text-light py-4">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h5>MindfulWell</h5>
+                        <p>Your mental health companion</p>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>Quick Links</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="#resources">Resources</a></li>
+                            <li><a href="#tools">Self-Help Tools</a></li>
+                            <li><a href="#resources">Find Help</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>Contact Us</h5>
+                        <p>Email: support@mindfulwell.com</p>
+                        <p>Phone: (555) 123-4567</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
