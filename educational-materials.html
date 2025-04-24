@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Educational Materials - MindfulWell</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #0d6eff;
+            --secondary-color: #ff6b6b;
+            --accent-color: #6c5ce7;
+            --text-color: #2c3e50;
+            --light-gray: #f8f9fa;
+            --wave-color: #0d6eff;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #ffffff;
+            min-height: 100vh;
+            color: var(--text-color);
+            position: relative;
+            overflow-x: hidden;
+        }
+        .wave-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('wave-haikei (3).svg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: -1;
+            opacity: 0.3;
+        }
+        .wave-background::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--wave-color);
+            opacity: 0.2;
+            mix-blend-mode: multiply;
+        }
+        .content-wrapper {
+            position: relative;
+            z-index: 1;
+        }
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        .navbar-brand {
+            color: var(--primary-color) !important;
+            font-weight: 600;
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .navbar-brand i {
+            font-size: 1.6rem;
+        }
+        .nav-link {
+            color: var(--text-color) !important;
+            font-weight: 500;
+            padding: 0.5rem 1rem !important;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        .nav-link:hover::after {
+            width: 80%;
+        }
+        .nav-link:hover {
+            color: var(--primary-color) !important;
+        }
+        .topic-section {
+            margin-bottom: 2.5rem;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease;
+        }
+        .topic-section:hover {
+            transform: translateY(-5px);
+        }
+        .topic-section h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        .topic-section h3 i {
+            font-size: 1.4rem;
+        }
+        .topic-section ul {
+            list-style: none;
+            padding: 0;
+        }
+        .topic-section li {
+            padding: 0.8rem 1rem;
+            margin-bottom: 0.5rem;
+            background: rgba(248, 249, 250, 0.8);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            transition: all 0.3s ease;
+        }
+        .topic-section li:hover {
+            background: rgba(13, 110, 255, 0.05);
+            transform: translateX(5px);
+        }
+        .topic-section li i {
+            color: var(--primary-color);
+            font-size: 1.1rem;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: none;
+            background-color: var(--primary-color);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            background-color: #0b5ed7;
+        }
+        .back-to-top i {
+            color: white;
+            font-size: 1.2rem;
+        }
+        h1 {
+            color: var(--text-color);
+            font-weight: 700;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+        footer {
+            background-color: rgba(33, 37, 41, 0.95);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        footer a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        footer a:hover {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="wave-background"></div>
+    <div class="content-wrapper">
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <i class="fas fa-heartbeat"></i>
+                    MindfulWell
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#resources">Resources</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <div class="container mt-5 pt-5">
+            <h1>Educational Materials</h1>
+            
+            <!-- What is Mental Health -->
+            <section id="what-is-mental-health" class="topic-section">
+                <h3><i class="fas fa-brain"></i>What is Mental Health?</h3>
+                <p>Mental health refers to our emotional, psychological, and social well-being. It affects how we think, feel, and act. It also helps determine how we handle stress, relate to others, and make choices. Mental health is important at every stage of life, from childhood and adolescence through adulthood.</p>
+            </section>
+
+            <!-- Mental Health vs Mental Illness -->
+            <section id="mental-health-vs-illness" class="topic-section">
+                <h3><i class="fas fa-balance-scale"></i>Mental Health vs Mental Illness</h3>
+                <p>Mental health is a state of well-being, while mental illness refers to diagnosable conditions that affect a person's thinking, feeling, mood, and behavior. Everyone has mental health, just like physical health, but not everyone has a mental illness. Mental illnesses are medical conditions that can be treated.</p>
+            </section>
+
+            <!-- Common Mental Health Disorders -->
+            <section id="common-disorders" class="topic-section">
+                <h3><i class="fas fa-clipboard-list"></i>Common Mental Health Disorders</h3>
+                <ul>
+                    <li><i class="fas fa-chevron-right"></i>Anxiety Disorders</li>
+                    <li><i class="fas fa-chevron-right"></i>Depression</li>
+                    <li><i class="fas fa-chevron-right"></i>Bipolar Disorder</li>
+                    <li><i class="fas fa-chevron-right"></i>Post-Traumatic Stress Disorder (PTSD)</li>
+                    <li><i class="fas fa-chevron-right"></i>Obsessive-Compulsive Disorder (OCD)</li>
+                    <li><i class="fas fa-chevron-right"></i>Schizophrenia</li>
+                    <li><i class="fas fa-chevron-right"></i>Eating Disorders</li>
+                </ul>
+            </section>
+
+            <!-- Signs and Symptoms -->
+            <section id="signs-symptoms" class="topic-section">
+                <h3><i class="fas fa-exclamation-circle"></i>Signs and Symptoms</h3>
+                <p>Common signs of mental health issues include:</p>
+                <ul>
+                    <li><i class="fas fa-chevron-right"></i>Feeling sad or down</li>
+                    <li><i class="fas fa-chevron-right"></i>Confused thinking or reduced ability to concentrate</li>
+                    <li><i class="fas fa-chevron-right"></i>Excessive fears or worries</li>
+                    <li><i class="fas fa-chevron-right"></i>Extreme mood changes</li>
+                    <li><i class="fas fa-chevron-right"></i>Withdrawal from friends and activities</li>
+                    <li><i class="fas fa-chevron-right"></i>Significant tiredness or low energy</li>
+                    <li><i class="fas fa-chevron-right"></i>Problems sleeping</li>
+                </ul>
+            </section>
+
+            <!-- Coping Strategies -->
+            <section id="coping-strategies" class="topic-section">
+                <h3><i class="fas fa-hands-helping"></i>Coping Strategies</h3>
+                <ul>
+                    <li><i class="fas fa-chevron-right"></i>Practice mindfulness and meditation</li>
+                    <li><i class="fas fa-chevron-right"></i>Maintain a regular sleep schedule</li>
+                    <li><i class="fas fa-chevron-right"></i>Exercise regularly</li>
+                    <li><i class="fas fa-chevron-right"></i>Eat a balanced diet</li>
+                    <li><i class="fas fa-chevron-right"></i>Stay connected with loved ones</li>
+                    <li><i class="fas fa-chevron-right"></i>Set realistic goals</li>
+                    <li><i class="fas fa-chevron-right"></i>Learn stress management techniques</li>
+                </ul>
+            </section>
+
+            <!-- Self-Care Techniques -->
+            <section id="self-care" class="topic-section">
+                <h3><i class="fas fa-heart"></i>Self-Care Techniques</h3>
+                <ul>
+                    <li><i class="fas fa-chevron-right"></i>Practice good sleep hygiene</li>
+                    <li><i class="fas fa-chevron-right"></i>Engage in regular physical activity</li>
+                    <li><i class="fas fa-chevron-right"></i>Maintain a healthy diet</li>
+                    <li><i class="fas fa-chevron-right"></i>Set boundaries in relationships</li>
+                    <li><i class="fas fa-chevron-right"></i>Take breaks when needed</li>
+                    <li><i class="fas fa-chevron-right"></i>Engage in hobbies and activities you enjoy</li>
+                    <li><i class="fas fa-chevron-right"></i>Practice relaxation techniques</li>
+                </ul>
+            </section>
+
+            <!-- Therapy Options -->
+            <section id="therapy-options" class="topic-section">
+                <h3><i class="fas fa-comments"></i>Therapy Options</h3>
+                <ul>
+                    <li><i class="fas fa-chevron-right"></i>Cognitive Behavioral Therapy (CBT)</li>
+                    <li><i class="fas fa-chevron-right"></i>Dialectical Behavior Therapy (DBT)</li>
+                    <li><i class="fas fa-chevron-right"></i>Psychodynamic Therapy</li>
+                    <li><i class="fas fa-chevron-right"></i>Group Therapy</li>
+                    <li><i class="fas fa-chevron-right"></i>Family Therapy</li>
+                    <li><i class="fas fa-chevron-right"></i>Art Therapy</li>
+                    <li><i class="fas fa-chevron-right"></i>Online Therapy</li>
+                </ul>
+            </section>
+
+            <!-- Medication Overview -->
+            <section id="medication" class="topic-section">
+                <h3><i class="fas fa-pills"></i>Medication Overview</h3>
+                <p>Common types of psychiatric medications include:</p>
+                <ul>
+                    <li><i class="fas fa-chevron-right"></i>Antidepressants</li>
+                    <li><i class="fas fa-chevron-right"></i>Anti-anxiety medications</li>
+                    <li><i class="fas fa-chevron-right"></i>Mood stabilizers</li>
+                    <li><i class="fas fa-chevron-right"></i>Antipsychotics</li>
+                    <li><i class="fas fa-chevron-right"></i>Stimulants</li>
+                </ul>
+                <p class="mt-3"><i class="fas fa-info-circle"></i> Note: Always consult with a healthcare professional before starting or changing any medication.</p>
+            </section>
+
+            <!-- Support Groups -->
+            <section id="support-groups" class="topic-section">
+                <h3><i class="fas fa-users"></i>Support Groups</h3>
+                <p>Support groups provide a safe space to:</p>
+                <ul>
+                    <li><i class="fas fa-chevron-right"></i>Share experiences</li>
+                    <li><i class="fas fa-chevron-right"></i>Learn from others</li>
+                    <li><i class="fas fa-chevron-right"></i>Receive emotional support</li>
+                    <li><i class="fas fa-chevron-right"></i>Build coping skills</li>
+                    <li><i class="fas fa-chevron-right"></i>Reduce feelings of isolation</li>
+                </ul>
+            </section>
+
+            <!-- Breaking the Stigma -->
+            <section id="breaking-stigma" class="topic-section">
+                <h3><i class="fas fa-comment-slash"></i>Breaking the Stigma</h3>
+                <p>Ways to combat mental health stigma:</p>
+                <ul>
+                    <li><i class="fas fa-chevron-right"></i>Educate yourself and others</li>
+                    <li><i class="fas fa-chevron-right"></i>Be conscious of language</li>
+                    <li><i class="fas fa-chevron-right"></i>Encourage equality between physical and mental illness</li>
+                    <li><i class="fas fa-chevron-right"></i>Show compassion for those with mental illness</li>
+                    <li><i class="fas fa-chevron-right"></i>Choose empowerment over shame</li>
+                </ul>
+            </section>
+
+            <!-- How to Support Others -->
+            <section id="supporting-others" class="topic-section">
+                <h3><i class="fas fa-hands-helping"></i>How to Support Others</h3>
+                <ul>
+                    <li><i class="fas fa-chevron-right"></i>Listen without judgment</li>
+                    <li><i class="fas fa-chevron-right"></i>Offer emotional support</li>
+                    <li><i class="fas fa-chevron-right"></i>Help them find professional help</li>
+                    <li><i class="fas fa-chevron-right"></i>Educate yourself about their condition</li>
+                    <li><i class="fas fa-chevron-right"></i>Be patient and understanding</li>
+                    <li><i class="fas fa-chevron-right"></i>Respect their boundaries</li>
+                    <li><i class="fas fa-chevron-right"></i>Take care of your own mental health</li>
+                </ul>
+            </section>
+        </div>
+
+        <!-- Back to Top Button -->
+        <a href="#" class="back-to-top" id="backToTop">
+            <i class="fas fa-arrow-up"></i>
+        </a>
+
+        <!-- Footer -->
+        <footer class="py-4 mt-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h5>MindfulWell</h5>
+                        <p>Your mental health companion</p>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>Quick Links</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="#resources">Resources</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>Contact Us</h5>
+                        <p>Email: support@mindfulwell.com</p>
+                        <p>Phone: (555) 123-4567</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Back to top button functionality
+        window.onscroll = function() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("backToTop").style.display = "flex";
+            } else {
+                document.getElementById("backToTop").style.display = "none";
+            }
+        };
+
+        document.getElementById("backToTop").addEventListener("click", function(e) {
+            e.preventDefault();
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        });
+    </script>
+</body>
+</html> 
